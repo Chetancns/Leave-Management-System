@@ -1,0 +1,13 @@
+Employee_ID=654323,Error_Message=Logfile cannot be read-only,Date=07-03-2021 17:35:00
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:31:08
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:32:54
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:40:50
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:40:51
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:43:04
+Employee_ID=654324,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 14:43:44
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 15:15:50
+Employee_ID=654321,Error_Message=Unable to cast object of type 'System.Data.Entity.Infrastructure.DbQuery`1[System.Int32]' to type 'System.Collections.Generic.List`1[System.Int32]'.,Date=23-03-2021 15:17:29
+Employee_ID=0,Error_Message=Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Date=29-03-2021 13:11:46
+Employee_ID=0,Error_Message=Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Date=29-03-2021 13:15:11
+Employee_ID=0,Error_Message=Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Date=29-03-2021 13:19:37
+Employee_ID=0,Error_Message=Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.,Date=29-03-2021 13:21:43

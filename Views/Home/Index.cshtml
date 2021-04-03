@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (ViewBag.msg != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true
+            };
+            toastr.success('<div>@ViewBag.msg</div>');
+
+            });
+    </script>
+}
+@section head{
+    <style type="text/css">
+        body {
+            background-image: url('/Content/Images/Leave.jpg');
+            margin: 0;
+        }
+    </style>
+}
+<h1 class="text-center text-primary" style="margin-top:50px">Welcome</h1>
+<div class="p-lg-5 text-center" style="margin:100px;font-family:'Brush Script MT';font-size:100px">Leave Management System</div>

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<LMSTRYONE.Models.Leave>
+
+@{
+    ViewBag.Title = "ApproveLeave";
+}
+@if (ViewBag.msg != null)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true
+            };
+            toastr.success('<div>@ViewBag.msg</div>');
+
+            });
+    </script>
+}
+@if (ViewBag.error != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true
+            };
+            toastr.error('<div>@ViewBag.error</div>', 'Leave Management System');
+            });
+    </script>
+}
+
+
+<h1 class="text-center text-primary">Approve Leave</h1>
+
+@if (Model.Any())
+{
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                View Details
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.days)
+                </td>
+                <td>
+                    @if (item.Status == "ForApproval")
+                    {<span class="dot-yellow"></span>}
+                    @if (item.Status == "Approved")
+                    {<span class="dot-green"></span>}
+                    @if (item.Status == "Rejected")
+                    {<span class="dot-red"></span>}
+                </td>
+
+            <td>
+                @Html.ActionLink("Details", "LeaveApplication", new { id = item.LeaveId }, new { @class = "btn btn-outline-success" })
+            </td>
+        </tr>
+        }
+
+    </table>
+    <br />
+    <span class="dot-yellow"></span> <strong>&nbsp;For Approval &nbsp;&nbsp;</strong>
+    <span class="dot-green"></span> <strong>&nbsp;Approved &nbsp;&nbsp;</strong>
+    <span class="dot-red"></span> <strong>&nbsp;Rejected &nbsp;&nbsp;</strong>
+
+
+}
+else
+{
+    <div class="jumbotron jumbotron_style bg-light">
+        <h2 class="text-xl-center">There is no Active Leave Application</h2>
+    </div>
+
+}
+
+@{Html.RenderAction("LeaveList");}
+    

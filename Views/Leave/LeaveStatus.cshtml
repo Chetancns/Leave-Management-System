@@ -1,0 +1,195 @@
+﻿@model IEnumerable<LMSTRYONE.Models.Leave>
+
+@{
+    ViewBag.Title = "LeaveStatus";
+}
+
+<h2 class="text-center">Leave Status</h2>
+<br />
+
+@if (Model.Any())
+{
+    <h4>Leave Application Waiting for Approval</h4>
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                Approver Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.Status == "ForApproval")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaveId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManagerId)
+                    </td>
+                    <td>
+                        <span class="dot-yellow"></span>
+                    </td>
+                </tr>
+
+            }
+        }
+    </table>
+
+    <br />
+    <h4>Approved Leave Application</h4>
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                Approver Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.Status == "Approved")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaveId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManagerId)
+                    </td>
+                    <td>
+                        <span class="dot-green"></span>
+                    </td>
+                </tr>
+
+            }
+        }
+    </table>
+    <br />
+    <h4>Rejected Leave Application</h4>
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reason)
+            </th>
+            <th>
+                Approver Id
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.Status == "Rejected")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaveId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reason)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManagerId)
+                    </td>
+                    <td>
+                        <span class="dot-red"></span>
+                    </td>
+                </tr>
+
+            }
+        }
+    </table>
+    <br />
+
+    <span class="dot-yellow"></span> <strong>&nbsp;For Approval &nbsp;&nbsp;</strong>
+    <span class="dot-green"></span> <strong>&nbsp;Approved &nbsp;&nbsp;</strong>
+    <span class="dot-red"></span> <strong>&nbsp;Rejected &nbsp;&nbsp;</strong>
+
+}
+else
+{
+    <div class="jumbotron jumbotron_style bg-light">
+        <h2 class="text-xl-center">There is no Leave Application</h2>
+    </div>
+}

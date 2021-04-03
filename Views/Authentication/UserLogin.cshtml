@@ -1,0 +1,57 @@
+﻿@model LMSTRYONE.ViewModel.LoginViewModel
+
+@{
+    ViewBag.Title = "UserLogin";
+}
+
+<h1 class="text-center text-primary">User Login</h1>
+@if (ViewBag.msg != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.success('<div>@ViewBag.msg</div>','Leave Management System');
+
+            });
+    </script>
+}
+@if (ViewBag.error != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.error('<div>@ViewBag.error</div>', 'Leave Management System');
+            });
+    </script>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmployeeId, new { htmlAttributes = new { @class = "form-control", placeholder = "Employee ID" } })
+                @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

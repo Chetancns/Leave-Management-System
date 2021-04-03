@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LMSTRYONE.Models.Leave>
+@if (Model.Any())
+{
+    <h2>Leave Application of the alternative Employees</h2>
+    <table class="table table-bordered table-striped table-hover text-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.days)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                View Details
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.days)
+                </td>
+                <td>
+                    @if (item.Status == "ForApproval")
+                    {<span class="dot-yellow"></span>}
+                    @if (item.Status == "Approved")
+                    {<span class="dot-green"></span>}
+                    @if (item.Status == "Rejected")
+                    {<span class="dot-red"></span>}
+                </td>
+
+                <td>
+                    @Html.ActionLink("Details", "LeaveApplication", new { id = item.LeaveId }, new { @class = "btn btn-outline-success" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <span class="dot-yellow"></span> <strong style="vertical-align:top;">&nbsp;For Approval &nbsp;&nbsp;</strong>
+    <span class="dot-green"></span> <strong>&nbsp;Approved &nbsp;&nbsp;</strong>
+    <span class="dot-red"></span> <strong>&nbsp;Rejected &nbsp;&nbsp;</strong>
+
+
+}
+

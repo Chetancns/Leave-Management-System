@@ -1,0 +1,59 @@
+﻿@model LMSTRYONE.Models.Leave
+
+@{
+    ViewBag.Title = "LeaveApplication";
+}
+
+<h2 class="text-center">Leave Application of</h2>
+
+<h4 class="text-primary text-center">@Html.DisplayFor(model => model.Employee.EmployeeName)</h4>
+
+<div class="table-responsive-md table-responsive-sm">
+    <strong>
+        <table class="table table-bordered table-striped table-hover text-center">
+            <tr>
+                <td>Reference Number</td>
+                <td colspan="3">@Html.DisplayFor(model => model.LeaveId)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.EmployeeId)</td>
+                <td>@Html.DisplayFor(model => model.EmployeeId)</td>
+                <td>@Html.DisplayNameFor(model => model.Employee.EmployeeName)</td>
+                <td>@Html.DisplayFor(model => model.Employee.EmployeeName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.StartDate)</td>
+                <td>@Html.DisplayFor(model => model.StartDate)</td>
+                <td>@Html.DisplayNameFor(model => model.EndDate)</td>
+                <td>@Html.DisplayFor(model => model.EndDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.days)</td>
+                <td>@Html.DisplayFor(model => model.days)</td>
+                <td>@Html.DisplayNameFor(model => model.Status)</td>
+                <td>
+                    @if (Model.Status == "ForApproval")
+                    {<span class="dot-yellow"></span>}
+                    @if (Model.Status == "Approved")
+                    {<span class="dot-green"></span>}
+                    @if (Model.Status == "Rejected")
+                    {<span class="dot-red"></span>}
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Reason)</td>
+                <td colspan="3">@Html.DisplayFor(model => model.Reason)</td>
+            </tr>
+            <tr>
+                <td colspan="2"> @Html.ActionLink("Approve", "LeaveApproval", new { id = Model.LeaveId }, new { @class = "btn btn-outline-success btn-lg btn-block" })</td>
+                <td colspan="2">@Html.ActionLink("Reject", "LeaveReject", new { id = Model.LeaveId }, new { @class = "btn btn-outline-danger btn-lg btn-block" })</td>
+            </tr>
+
+        </table>
+    </strong>
+</div>
+<br />
+<span class="dot-yellow"></span> <strong>&nbsp;For Approval &nbsp;&nbsp;</strong>
+<span class="dot-green"></span> <strong>&nbsp;Approved &nbsp;&nbsp;</strong>
+<span class="dot-red"></span> <strong>&nbsp;Rejected &nbsp;&nbsp;</strong>
+

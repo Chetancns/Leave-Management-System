@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - LMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @RenderSection("head", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
+</head>
+<body class="bg-light">
+    @*<img src="~/Content/Images/lmslogo.png" style="height:68px;width:330px" alt="Alternate Text" />*@
+    @*<span style="font-family:'Colonna MT';font-size:68px">LMS</span>*@
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <span class="text-info h3"><strong>LMS</strong></span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item active">
+                        @Html.ActionLink(" Home", "Index", "Employee", null, new { @class = "btn btn-secondary fa fa-home" })
+                    </li>
+                    <li class="nav-item active">@Html.ActionLink(" Apply Leave", "ApplyeLeave", "Leave", null, new { @class = "btn btn-secondary fa fa-calendar-plus-o" })</li>
+                    <li class="nav-item active">@Html.ActionLink(" View Status", "LeaveStatus", "Leave", null, new { @class = "btn btn-secondary fa fa-certificate" })</li>
+                    <li class="nav-item active">@Html.ActionLink(" Approve Leave", "ApproveLeave", "Leave", null, new { @class = "btn btn-secondary fa fa-check" })</li>
+                }
+                else
+                {
+                    <li class="nav-item active">
+                        @Html.ActionLink(" Home", "Index", "Home", null, new { @class = "btn btn-secondary fa fa-home" })
+                    </li>
+                }@*
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        More
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @Html.ActionLink("About", "About", "Home", null, new { @class = "dropdown-item btn btn-secondary " })
+                        <div class="dropdown-divider"></div>
+                        @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "dropdown-item btn btn-secondary " })
+                    </div>
+                </li>*@
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                Html.RenderAction("EmployeeName", "Employee");
+                @Html.ActionLink(" Log Out", "Logout", "Authentication", null, new { @class = "btn btn-light fa fa-sign-out" })
+            }
+            else
+            {
+                @Html.ActionLink(" Register", "Register", "Authentication", null, new { @class = "btn btn-secondary fa fa-user-plus" })
+                @Html.ActionLink("  Login", "UserLogin", "Authentication", null, new { @class = "btn btn-secondary fa fa-sign-in" })
+            }
+        </div>
+    </nav>
+    <div class="container body-content">
+        <div style="padding-top:10px;"></div>
+        @RenderBody()
+
+
+    </div>
+    <footer class="bg-transparent text-center text-lg-start" style="position:fixed;bottom: 0px;right: 0px;">
+        <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2)">
+            <p>&copy; @DateTime.Now.Year - Leave Managment System</p>
+        </div>
+
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

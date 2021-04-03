@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@if (ViewBag.msg != null)
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true
+            };
+            toastr.success('<div>@ViewBag.msg</div>');
+
+            });
+    </script>
+}
+@if (ViewBag.error != null)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true
+            };
+            toastr.error('<div>@ViewBag.error</div>', 'Leave Management System');
+            });
+    </script>
+}
+@section head{
+    <style type="text/css">
+        body {
+            background-image: url('/Content/Images/leave-application-7529202.jpg');
+            margin: 0;
+        }
+    </style>
+}
+
+<h1 class="text-center text-warning" style="margin-top:50px">Welcome @ViewBag.EName</h1>
+<br />
+@*<h3 class="text-capitalize text-center text-success" style="margin:50px;font-family:'Lucida Console';font-size:100px">Hope your having a good day</h3>*@
