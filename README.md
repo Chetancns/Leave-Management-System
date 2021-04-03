@@ -2,7 +2,7 @@
 The application has five major components Register, Login, Apply Leave, Approve Leave and Leave Status. 
 The application built using Asp.net MVC framework and Entity framework and database used is MS SQL. This is a database first application
 
-  Requirements
+  Requirements:
 Build a software to apply leave in system and approval workflow to get it approved by L1 manager.
 1.Registration required to login portal
 2.Without Login Leave cannot be applied
